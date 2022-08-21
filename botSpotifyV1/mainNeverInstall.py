@@ -42,7 +42,7 @@ def main():
         email= (elem["email"])
         id=(elem["_id"])
         passw =(elem["pass"])
-        db.updateOne("accountmanager",id,"acc_estado",2)
+        db.updateOne("accountmanager",id,"acc_estado",5)
         db.cerrarConexion()
 
     print (email, id,db,passw)
