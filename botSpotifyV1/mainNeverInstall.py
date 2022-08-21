@@ -42,7 +42,7 @@ def main():
         email= (elem["email"])
         id=(elem["_id"])
         passw =(elem["pass"])
-        db.updateOne("accountmanager",id,"acc_estado",2)
+        #db.updateOne("accountmanager",id,"acc_estado",2)
         db.cerrarConexion()
 
     print (email, id,db,passw)
@@ -79,18 +79,19 @@ def main():
         pyautogui.moveTo(74, 430)                
         pyautogui.click(button='right')
         time.sleep(10)
-        pyautogui.moveTo(120, 580)
+
+        pyautogui.moveTo(110, 620)
         time.sleep(1)
-        pyautogui.moveTo(120, 580)
-        pyautogui.click()
-        time.sleep(1)
+        pyautogui.moveTo(110, 620)
+        pyautogui.click(110,620)
+        time.sleep(10)
         pyautogui.moveTo(600, 700)
         time.sleep(1)
         pyautogui.moveTo(600, 700)        
         pyautogui.click()         
         acciones.sleep(15)
         pyautogui.screenshot(os.path.join(pathImg,f"{email}.png"))
-        acciones.sleep(15)
+        acciones.sleep(10)
         acciones.enviardatos(email)        
 
 
