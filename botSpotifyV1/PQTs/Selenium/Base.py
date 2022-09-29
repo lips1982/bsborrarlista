@@ -61,7 +61,10 @@ class BaseAcciones():
     def findElement(self, el):
         elemento = self.driver.find_element(*el)
         return elemento
-
+    def findElements(self, el):
+        elemento = self.driver.find_elements(*el)
+        return elemento
+        
     def selecionarlista(self, el,valor):
         el.select_by_value(valor)
          

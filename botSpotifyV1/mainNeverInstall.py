@@ -14,15 +14,10 @@ from PQTs.Selenium.Acciones.enviaremail import enviaremailerror
 def main():
 
 
-    #--> Descomentar para ver en PC
-    #display = Display(visible=True, size=(1200,768))
-
     display = Display(visible=True, size=(1900,1268), backend="xvfb", use_xauth=True)
 
     display.start()
 
-    #--> Descomentar para ver en PC
-    #pyautogui._pyautogui_x11._display = Xlib.display.Display(":0")
 
     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
     time.sleep (random.randint(1,30))
@@ -73,41 +68,7 @@ def main():
         acciones.refreshweb()
         #while returnLoginSpotify== False:
         #    returnLoginSpotify= acciones.loginSpotify(email,password)
-        time.sleep(10)
-        pyautogui.moveTo(74, 430)
-        time.sleep(1)
-        pyautogui.moveTo(74, 430)                
-        pyautogui.click(button='right')
-        time.sleep(10)
-        pyautogui.moveTo(110, 620)
-        time.sleep(1)
-        pyautogui.moveTo(110, 620)
-        pyautogui.click(110,620)
-        time.sleep(10)
-        pyautogui.moveTo(600, 700)
-        time.sleep(1)
-        pyautogui.moveTo(600, 700)        
-        pyautogui.click() 
-        time.sleep(5)
-
-        acciones.refreshweb()
-        time.sleep(10)
-        pyautogui.moveTo(74, 430)
-        time.sleep(1)
-        pyautogui.moveTo(74, 430)                
-        pyautogui.click(button='right')
-        time.sleep(10)
-
-        pyautogui.moveTo(110, 620)
-        time.sleep(1)
-        pyautogui.moveTo(110, 620)
-        pyautogui.click(110,620)
-        time.sleep(10)
-        pyautogui.moveTo(600, 700)
-        time.sleep(1)
-        pyautogui.moveTo(600, 700)        
-        pyautogui.click() 
-
+        acciones.borrarlista()
         acciones.sleep(15)
         pyautogui.screenshot(os.path.join(pathImg,f"{email}.png"))
         acciones.sleep(10)
@@ -129,15 +90,15 @@ def main():
         exit()
 
     
-    display.stop()
+    #display.stop()
 
 if __name__ == '__main__':
     try:
         main()
     except Exception as e:
-        with open(os.path.join(pathImg,f"errormain.txt"), 'w') as f:
-            f.write(str(e))
-
+        #with open(os.path.join(pathImg,f"errormain.txt"), 'w') as f:
+        #    f.write(str(e))
+        print (e)
 
 
 #acc 1: registrada ok

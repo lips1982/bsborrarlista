@@ -2,6 +2,8 @@
 
 import random
 import time
+
+import pyautogui
 from PQTs.Selenium.Base import BaseAcciones
 from PQTs.Utilizar import urlSpotifysinginUS
 from selenium.common import exceptions
@@ -61,22 +63,38 @@ class Acciones(BaseAcciones):
             time.sleep(2)
             return False
     
-    def cambiarpais(self):
+    def borrarlista(self):
         try: 
 
             time.sleep(3)                            
-            xpathpaises = (By.XPATH, '//*[@id="country"]')
-            select_element=self.findElement(xpathpaises)
-            select_object= Select(select_element)
-            select_object.select_by_value('US')
-            time.sleep(3)
-            xpathbotonsave =(By.XPATH, '//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/article/section/form/div/button')
-            self.click(xpathbotonsave)
-            print("click SAVE")
-            time.sleep(3)
-            return True
-        except:
-            return False
+            xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
+            xpathtrespuntos=  (By.XPATH, "//button[@aria-haspopup='menu' and @class='T0anrkk_QA4IAQL29get']")
+            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Delete')]")
+            
+            Visiblelistareproduccion = self.explicitWaitElementoVisibility(15,xpathlistas)
+
+            if Visiblelistareproduccion:
+                print ("visible lista de canciones")
+                listacancio= self.findElements(xpathlistas)
+                print (listacancio)
+                
+                for elem in listacancio:
+                    elem.click()
+
+                    Visibletrespuntos = self.explicitWaitElementoVisibility(15,xpathtrespuntos)
+                    if Visibletrespuntos:
+                        self.click(xpathtrespuntos)
+                        Visibledelete = self.explicitWaitElementoVisibility(15,xpathtdelete)
+                        if Visibledelete:
+                            self.click(xpathtdelete)
+                            time.sleep(3)
+                            pyautogui.press('enter')
+            time.sleep(10)                            
+            print ("Saliendo ....")
+            self.salir()
+
+        except Exception as e:
+            print(e)
 
     def enviardatos(self,email):
         remitente = 'mayfeljonas1229@gmail.com'
