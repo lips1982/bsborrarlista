@@ -71,7 +71,7 @@ def main():
         acciones.borrarlista()
         acciones.sleep(15)
         pyautogui.screenshot(os.path.join(pathImg,f"{email}.png"))
-        acciones.sleep(10)
+        acciones.sleep(15)
         acciones.enviardatos(email)        
 
 

@@ -91,7 +91,7 @@ class Acciones(BaseAcciones):
                             pyautogui.press('enter')
             time.sleep(10)                            
             print ("Saliendo ....")
-            self.salir()
+            
 
         except Exception as e:
             print(e)
