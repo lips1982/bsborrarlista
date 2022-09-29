@@ -36,13 +36,13 @@ def main():
     id=[]
     passw=[]
 
-    result= db.findby1("accountmanager","acc_estado",4)
+    result= db.findby1("accountmanager","acc_estado",3)
 
     for elem in result:
         email= (elem["email"])
         id=(elem["_id"])
         passw =(elem["pass"])
-        db.updateOne("accountmanager",id,"acc_estado",5)
+        db.updateOne("accountmanager",id,"acc_estado",6)
         db.cerrarConexion()
 
     print (email, id,db,passw)
